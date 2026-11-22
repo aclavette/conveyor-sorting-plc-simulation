@@ -1,6 +1,6 @@
 # I/O Table
 
-Tag list for the conveyor sorting PLC simulation. Names match `logic/conveyor-sorting.forge.json` exactly.
+Tag list for the conveyor sorting PLC simulation.
 
 ## Inputs
 
