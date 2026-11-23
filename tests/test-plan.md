@@ -44,12 +44,12 @@ T13-15 share one run. Reset the simulator, start the system, then send 2 tall pa
 
 | # | Test | Precondition | Action | Expected | Actual | Pass/Fail |
 |---|------|--------------|--------|----------|--------|-----------|
-| 16 | Jam detected | Running | Set PartSensor true and hold it | JamTimer counts; Fault latches at ~5.0 s | | |
-| 17 | Fault response | T16 state, PartSensor still true | Observe | SystemOK, Run, ConveyorMotor, and GreenLamp off; RedLamp on | | |
-| 18 | Reset blocked while jammed | T17 state | Pulse ResetPB with PartSensor still true | Fault and RedLamp stay on | | |
-| 19 | Fault stays latched | T18 state | Set PartSensor false | Fault and RedLamp stay on until reset | | |
-| 20 | Reset | T19 state, EStop true | Pulse ResetPB | Fault and RedLamp clear; SystemOK returns; Run and ConveyorMotor stay off until StartPB is pulsed | | |
-| 21 | Reset blocked during e-stop | Fault latched, PartSensor false | Set EStop false, pulse ResetPB | Fault stays on until EStop is restored and ResetPB is pulsed again | | |
+| 16 | Jam detected | Running | Set PartSensor true and hold it | JamTimer counts; Fault latches at ~5.0 s | With PartSensor held true, Fault turned on at ~5.0 s. | Pass |
+| 17 | Fault response | T16 state, PartSensor still true | Observe | SystemOK, Run, ConveyorMotor, and GreenLamp off; RedLamp on | With Fault on, SystemOK, Run, ConveyorMotor, and GreenLamp turned off and RedLamp turned on. | Pass |
+| 18 | Reset blocked while jammed | T17 state | Pulse ResetPB with PartSensor still true | Fault and RedLamp stay on | With PartSensor still true, pulsing ResetPB had no effect. Fault and RedLamp stayed on. | Pass |
+| 19 | Fault stays latched | T18 state | Set PartSensor false | Fault and RedLamp stay on until reset | After PartSensor was released, Fault and RedLamp stayed on. | Pass |
+| 20 | Reset | T19 state, EStop true | Pulse ResetPB | Fault and RedLamp clear; SystemOK returns; Run and ConveyorMotor stay off until StartPB is pulsed | After pulsing ResetPB, Fault and RedLamp turned off and SystemOK turned on. Run, ConveyorMotor, and GreenLamp stayed off until StartPB was pulsed. | Pass |
+| 21 | Reset blocked during e-stop | Fault latched, PartSensor false | Set EStop false, pulse ResetPB | Fault stays on until EStop is restored and ResetPB is pulsed again | With EStop false, pulsing ResetPB had no effect and Fault stayed on. After EStop was restored and ResetPB was pulsed again, Fault and RedLamp turned off. | Pass |
 
 ## E. Documented behavior
 
@@ -65,5 +65,3 @@ T13-15 share one run. Reset the simulator, start the system, then send 2 tall pa
         - Fix: Added rung that clears Tracking when TravelTimer finishes and the part is not tall. Found and deleted redundant rung.
     - Re-test: after adding the rung, T11 passed (Tracking cleared at ~2 s, diverter stayed off)
 - Test 16 also registers a part detection, so counters increment during jam tests.
-- Failures and fixes: (list any here, for example, "T12 failed on first run: tall part diverted immediately after a short part because Tracking stayed latched; fixed by clearing Tracking when TravelTimer finishes with TallMemory false; re-test passed")
-- Evidence: see `media/demo.mp4` and `logic/rung-screenshots/`
