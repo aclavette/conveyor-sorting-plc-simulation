@@ -2,7 +2,7 @@
 
 Tested in the FORGE browser-based PLC simulator.
 
-- Program: `logic/conveyor-sorting.forge.json`
+- Program: `logic/conveyor-sorting.json`
 - Scan time: 20 ms. Timer presets: TravelTimer 2000 ms, DiverterTimer 1000 ms, JamTimer 5000 ms.
 
 
@@ -50,13 +50,6 @@ T13-15 share one run. Reset the simulator, start the system, then send 2 tall pa
 | 19 | Fault stays latched | T18 state | Set PartSensor false | Fault and RedLamp stay on until reset | After PartSensor was released, Fault and RedLamp stayed on. | Pass |
 | 20 | Reset | T19 state, EStop true | Pulse ResetPB | Fault and RedLamp clear; SystemOK returns; Run and ConveyorMotor stay off until StartPB is pulsed | After pulsing ResetPB, Fault and RedLamp turned off and SystemOK turned on. Run, ConveyorMotor, and GreenLamp stayed off until StartPB was pulsed. | Pass |
 | 21 | Reset blocked during e-stop | Fault latched, PartSensor false | Set EStop false, pulse ResetPB | Fault stays on until EStop is restored and ResetPB is pulsed again | With EStop false, pulsing ResetPB had no effect and Fault stayed on. After EStop was restored and ResetPB was pulsed again, Fault and RedLamp turned off. | Pass |
-
-## E. Documented behavior
-
-| # | Test | Precondition | Action | Expected | Actual | Pass/Fail |
-|---|------|--------------|--------|----------|--------|-----------|
-| 11 | Short part passes | Running | Set TallPart false, pulse PartSensor, watch for 4 s | Diverter never turns on; Tracking clears when TravelTimer finishes | | |
-
 
 ## Notes
 - Test failures and fixes
