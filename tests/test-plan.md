@@ -32,7 +32,7 @@ Start each test with the system running (pulse StartPB after reset).
 
 ## C. Counters
 
-T13-15 share one run. Reset the simulator, start the system, then send 2 tall parts and 1 short part (TallPart true for the tall ones, false for the short one), waiting 3 s between parts so each finishes.
+Tests 13-15 share one run. Reset the simulator, start the system, then send 2 tall parts and 1 short part (TallPart true for the tall ones, false for the short one), waiting 3 s between parts so each finishes.
 
 | # | Test | Precondition | Action | Expected | Actual | Pass/Fail |
 |---|------|--------------|--------|----------|--------|-----------|
@@ -51,10 +51,19 @@ T13-15 share one run. Reset the simulator, start the system, then send 2 tall pa
 | 20 | Reset | T19 state, EStop true | Pulse ResetPB | Fault and RedLamp clear; SystemOK returns; Run and ConveyorMotor stay off until StartPB is pulsed | After pulsing ResetPB, Fault and RedLamp turned off and SystemOK turned on. Run, ConveyorMotor, and GreenLamp stayed off until StartPB was pulsed. | Pass |
 | 21 | Reset blocked during e-stop | Fault latched, PartSensor false | Set EStop false, pulse ResetPB | Fault stays on until EStop is restored and ResetPB is pulsed again | With EStop false, pulsing ResetPB had no effect and Fault stayed on. After EStop was restored and ResetPB was pulsed again, Fault and RedLamp turned off. | Pass |
 
+## E. Output safety
+
+| # | Test | Precondition | Action | Expected | Actual | Pass/Fail |
+|---|------|--------------|--------|----------|--------|-----------|
+| 22 | E-stop during divert | Running, TallPart true | Pulse PartSensor; when Diverter turns on (~2.0 s), set EStop false and keep it false for at least 2 s | Diverter turns off immediately, along with SystemOK, Run, ConveyorMotor, and GreenLamp; Diverter stays off while EStop is false | With EStop false while Diverter was on, ConveyorMotor and GreenLamp turned off, but Diverter stayed on until DiverterTimer finished (~3.0 s after detection). | Fail |
+
 ## Notes
-- Test failures and fixes
-    - Test 11 failed on first run; Tracking stayed latched after TravelTimer finished instead of clearing at 2.0 s. 
-        - Cause: the only rung that clears Tracking is triggered by DiverterTimer being done; a short part never clears Tracking.
-        - Fix: Added rung that clears Tracking when TravelTimer finishes and the part is not tall. Found and deleted redundant rung.
-    - Re-test: after adding the rung, T11 passed (Tracking cleared at ~2 s, diverter stayed off)
-- Test 16 also registers a part detection, so counters increment during jam tests.
+
+- **Test 11 failed on first run.** For a short part, `Diverter` correctly stayed off, but `Tracking` stayed on after `TravelTimer` finished instead of turning off at ~2.0 s.
+    - **Cause:** the only rung that turned off `Tracking` was triggered by `DiverterTimer` finishing. `DiverterTimer` runs only while `DivertActive` is on, and `DivertActive` is only set for tall parts, so a short part never turned off `Tracking`.
+    - **Fix:** added a rung that turns off `Tracking` when `TravelTimer` finishes and `TallMemory` is off (the part is not tall). It sits above the rung that turns off `TallMemory`, so the tall flag is still available when it is evaluated. Also deleted a redundant rung that turned off `TallMemory` when it was already off.
+    - **Re-test:** Test 11 passed after the fix. `Tracking` turned off at ~2 s and `Diverter` stayed off.
+- **Test 22 failed on first run.** With `EStop` set false while `Diverter` was on, `ConveyorMotor` and `GreenLamp` turned off, but `Diverter` stayed on until `DiverterTimer` finished (~3.0 s after detection).
+    - **Cause:** the Diverter output rung (rung 009) was driven by `DivertActive` alone, so an e-stop or fault did not turn off the diverter.
+    - **Fix:** added `XIC(SystemOK)` to the Diverter output rung, so an e-stop or fault turns off `Diverter` immediately. `DivertActive` and `DiverterTimer` are unchanged, so the sequence cleanup still completes.
+    - **Re-test:** Test 22 passed after the fix. `Diverter` turned off as soon as `EStop` was set false.
