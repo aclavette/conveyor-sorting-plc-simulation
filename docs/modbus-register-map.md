@@ -6,7 +6,7 @@ Tag names match `logic/conveyor-sorting.json`. See [io-table.md](io-table.md) fo
 
 ## Conventions
 
-- **Addresses** are zero-based protocol addresses, as sent on the wire. The reference column shows the traditional 5-digit numbers (add 1 to the address and use the prefix for the table: 0xxxx coils, 1xxxx discrete inputs, 3xxxx input registers, 4xxxx holding registers).
+- **Addresses** are zero-based protocol addresses, as sent on the wire. The reference column shows the traditional 5-digit numbers (add 1 to the address and use the prefix for the table: 0xxxx coils, 1xxxx discrete inputs, 3xxxx input registers).
 - **Registers** are unsigned 16-bit integers.
 - **Times** are in milliseconds, matching the program's timer presets.
 - **Unit ID, port, byte order, and polling rate** are not specified, because there was no client to test against.
@@ -49,24 +49,15 @@ Function code 04.
 | 0 | 30001 | `TotalCount` | Total parts detected |
 | 1 | 30002 | `TallCount` | Tall parts detected |
 | 2 | 30003 | `ShortCount` | Short parts detected |
-| 3 | 30004 | `TravelTimer` accumulated value | Elapsed travel time (ms) |
-| 4 | 30005 | `DiverterTimer` accumulated value | Elapsed diverter time (ms) |
-| 5 | 30006 | `JamTimer` accumulated value | Elapsed jam-detection time (ms), up to 5000 |
-
-## Holding registers (read/write 16-bit)
-
-Function codes 03 (read), 06 (write single), 16 (write multiple). Optional tuning values.
-
-| Address | Reference | Tag | Description | Units |
-|---------|-----------|-----|-------------|-------|
-| 0 | 40001 | `TravelTimer` preset | Sensor-to-diverter travel time (default 2000) | ms |
-| 1 | 40002 | `DiverterTimer` preset | Diverter on-time (default 1000) | ms |
+| 3 | 30004 | `TravelTimer.ACC` | Elapsed travel time (ms) |
+| 4 | 30005 | `DiverterTimer.ACC` | Elapsed diverter time (ms) |
+| 5 | 30006 | `JamTimer.ACC` | Elapsed jam-detection time (ms), up to 5000 |
 
 ## Design notes
 
 - **E-stop is read-only.** It is exposed for monitoring but cannot be written. A safety function should stay hardwired and never depend on a network command.
 - **Remote commands go through the same logic as the pushbuttons.** A remote start still needs `SystemOK`. A remote reset still needs the sensor clear and a healthy e-stop, so the network cannot override the safety permissive or the fault latch.
 - **Stop polarity.** `StopPB` is healthy-high, so the stop coil is inverted. A client that holds it at 0 keeps the system stopped, and writing 1 restores it.
-- **Jam time is not writable.** `JamTimer`'s preset is a protection setting, so it is left out of the holding registers. Only the two process timers can be tuned remotely.
+- **No process settings are writable.** Timer presets, including the jam-detection time, stay fixed in the program. The only writable points are the three command coils.
 - **Counters** fit comfortably in 16 bits (preset 1000).
-- **Not defined:** behavior on loss of communication, write-protection of the holding registers, and any authentication. A real deployment would need all three.
+- **Not defined:** behavior on loss of communication, write-protection of the command coils, and any authentication. A real deployment would need all three.
