@@ -1,0 +1,1993 @@
+{
+  "format": "SCAN-CYCLE-LABS-PROJECT-V1",
+  "project": {
+    "contractVersion": "FORGE-PROJECT-INTERCHANGE-V1",
+    "document": {
+      "id": "project-6fd6dfab-9a66-4136-b3e1-8de3379accbf",
+      "formatVersion": "1.1",
+      "revision": 255,
+      "metadata": {
+        "name": "Untitled project",
+        "description": "Build your first Ladder routine.",
+        "difficulty": "BEGINNER",
+        "category": "Fundamentals"
+      },
+      "controller": {
+        "scanMode": "CLASSIC",
+        "scanTimeMs": 20,
+        "tags": [
+          {
+            "id": "tag_afa94570-ec2b-4c97-93c0-1fc07786bfac",
+            "name": "ConveyorMotor",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "Runs while the system is on",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:05.392Z"
+          },
+          {
+            "id": "tag_66bf9cf2-0c23-4828-bde3-ae9e96491b36",
+            "name": "DivertActive",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "Diverter sequence active",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:55:23.518Z"
+          },
+          {
+            "id": "tag_fa33cf24-4cb8-4bbf-a046-90ff6d86fb7d",
+            "name": "Diverter",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "Pushes tall parts off the line",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:55:23.538Z"
+          },
+          {
+            "id": "tag_5c1b15fa-6665-4323-a423-2d85557eea56",
+            "name": "DiverterTimer",
+            "type": "TIMER",
+            "access": "READ_WRITE",
+            "initialValue": {
+              "PRE": 1000,
+              "ACC": 0,
+              "EN": false,
+              "TT": false,
+              "DN": false
+            },
+            "value": {
+              "PRE": 1000,
+              "ACC": 0,
+              "EN": false,
+              "TT": false,
+              "DN": false
+            },
+            "description": "",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:55:23.538Z"
+          },
+          {
+            "id": "tag_cee27783-9913-4413-8493-9796198afdca",
+            "name": "EStop",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": true,
+            "value": true,
+            "description": "true = circuit healthy;\nfalse = estop triggered",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:32:48.174Z"
+          },
+          {
+            "id": "tag_9d558f78-123c-4229-9759-832fd28bbc29",
+            "name": "Fault",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "latch fault",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:53:25.826Z"
+          },
+          {
+            "id": "tag_f30e3c82-f29a-4f91-8b67-3fb0c06b5d75",
+            "name": "GreenLamp",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "Running indicator",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:05.392Z"
+          },
+          {
+            "id": "tag_8fe73902-45af-4f50-a66d-c43766458db2",
+            "name": "JamTimer",
+            "type": "TIMER",
+            "access": "READ_WRITE",
+            "initialValue": {
+              "PRE": 5000,
+              "ACC": 0,
+              "EN": false,
+              "TT": false,
+              "DN": false
+            },
+            "value": {
+              "PRE": 5000,
+              "ACC": 1080,
+              "EN": true,
+              "TT": true,
+              "DN": false
+            },
+            "description": "",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:21.963Z"
+          },
+          {
+            "id": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2",
+            "name": "PartDetected",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "Rising-edge pulse",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:20.873Z"
+          },
+          {
+            "id": "tag_e6d3d8b1-7734-4e08-b2e4-45f09b002c58",
+            "name": "PartSensor",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "true = part detected",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:21.982Z"
+          },
+          {
+            "id": "tag_dd8e9423-02b9-4d01-b1d0-1d92af19c351",
+            "name": "RedLamp",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "Fault indicator",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:53:25.826Z"
+          },
+          {
+            "id": "tag_bb8910ba-5f2e-4fe8-8e0f-0babbe7e27a2",
+            "name": "ResetPB",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "Reset button",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-20T15:23:26.457Z"
+          },
+          {
+            "id": "tag_cc9aea67-3c3b-499e-a0b8-392dc6e799e8",
+            "name": "Run",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "Motor run latch",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:05.392Z"
+          },
+          {
+            "id": "tag_2ff93df5-492f-4496-bb28-d7e2afca6257",
+            "name": "ShortCount",
+            "type": "COUNTER",
+            "access": "READ_WRITE",
+            "initialValue": {
+              "PRE": 1000,
+              "ACC": 0,
+              "CU": false,
+              "CD": false,
+              "DN": false,
+              "OV": false,
+              "UN": false
+            },
+            "value": {
+              "PRE": 1000,
+              "ACC": 0,
+              "CU": false,
+              "CD": false,
+              "DN": false,
+              "OV": false,
+              "UN": false
+            },
+            "description": "",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:53:25.826Z"
+          },
+          {
+            "id": "tag_ab7b573a-cc4a-401d-80fd-decdc5bcf17e",
+            "name": "StartPB",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": false,
+            "description": "Start button",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:05.668Z"
+          },
+          {
+            "id": "tag_660163d9-0aa3-4d0c-a1f2-b8b77a013b3e",
+            "name": "StopPB",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": true,
+            "value": true,
+            "description": "true = stop circuit healthy;\nfalse = stop requested",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:21:23.846Z"
+          },
+          {
+            "id": "system:AlwaysOff",
+            "name": "System_AlwaysOff",
+            "type": "BOOL",
+            "access": "READ_ONLY",
+            "initialValue": false,
+            "value": false,
+            "description": "Engine-owned system tag: always 0.",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-20T14:54:29.508Z"
+          },
+          {
+            "id": "system:AlwaysOn",
+            "name": "System_AlwaysOn",
+            "type": "BOOL",
+            "access": "READ_ONLY",
+            "initialValue": true,
+            "value": true,
+            "description": "Engine-owned system tag: always 1.",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-20T14:54:29.508Z"
+          },
+          {
+            "id": "system:Clock_1s",
+            "name": "System_Clock_1s",
+            "type": "BOOL",
+            "access": "READ_ONLY",
+            "initialValue": false,
+            "value": true,
+            "description": "Engine-owned system tag: changes state every 1.000 s of runtime time; 0 at reset.",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:21.101Z"
+          },
+          {
+            "id": "system:Clock_5s",
+            "name": "System_Clock_5s",
+            "type": "BOOL",
+            "access": "READ_ONLY",
+            "initialValue": false,
+            "value": true,
+            "description": "Engine-owned system tag: changes state every 5.000 s of runtime time; 0 at reset.",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:19.046Z"
+          },
+          {
+            "id": "system:Scan_Count",
+            "name": "System_Scan_Count",
+            "type": "DINT",
+            "access": "READ_ONLY",
+            "initialValue": 0,
+            "value": 893,
+            "description": "Engine-owned system tag: the number of the scan being executed; 0 at reset.",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:21.963Z"
+          },
+          {
+            "id": "system:Scan_First",
+            "name": "System_Scan_First",
+            "type": "BOOL",
+            "access": "READ_ONLY",
+            "initialValue": false,
+            "value": false,
+            "description": "Engine-owned system tag: 1 during the first scan after reset or project load, then 0.",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:03.510Z"
+          },
+          {
+            "id": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54",
+            "name": "SystemOK",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "Safety permissive",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:03.481Z"
+          },
+          {
+            "id": "tag_b6c97969-c35e-48a8-8cc0-ee816b7fbe84",
+            "name": "TallCount",
+            "type": "COUNTER",
+            "access": "READ_WRITE",
+            "initialValue": {
+              "PRE": 1000,
+              "ACC": 0,
+              "CU": false,
+              "CD": false,
+              "DN": false,
+              "OV": false,
+              "UN": false
+            },
+            "value": {
+              "PRE": 1000,
+              "ACC": 1,
+              "CU": false,
+              "CD": false,
+              "DN": false,
+              "OV": false,
+              "UN": false
+            },
+            "description": "",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:20.873Z"
+          },
+          {
+            "id": "tag_21aac8d8-1d52-446d-bcaa-bcf2b38738fa",
+            "name": "TallMemory",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "Stores classification",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:20.853Z"
+          },
+          {
+            "id": "tag_50c9eb9b-6c0b-4b03-8ab2-1661a4745813",
+            "name": "TallPart",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "part classification",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:56:07.241Z"
+          },
+          {
+            "id": "tag_5585c577-ef24-45c2-aa1a-a99376b1a91a",
+            "name": "TotalCount",
+            "type": "COUNTER",
+            "access": "READ_WRITE",
+            "initialValue": {
+              "PRE": 1000,
+              "ACC": 0,
+              "CU": false,
+              "CD": false,
+              "DN": false,
+              "OV": false,
+              "UN": false
+            },
+            "value": {
+              "PRE": 1000,
+              "ACC": 1,
+              "CU": false,
+              "CD": false,
+              "DN": false,
+              "OV": false,
+              "UN": false
+            },
+            "description": "",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:20.873Z"
+          },
+          {
+            "id": "tag_b13ed5b9-8172-4dab-bd54-d4ee48c496f0",
+            "name": "Tracking",
+            "type": "BOOL",
+            "access": "READ_WRITE",
+            "initialValue": false,
+            "value": true,
+            "description": "True if part is traveling",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:20.853Z"
+          },
+          {
+            "id": "tag_9eba6902-2cc7-4cfd-968b-a2b2157aa7a2",
+            "name": "TravelTimer",
+            "type": "TIMER",
+            "access": "READ_WRITE",
+            "initialValue": {
+              "PRE": 2000,
+              "ACC": 0,
+              "EN": false,
+              "TT": false,
+              "DN": false
+            },
+            "value": {
+              "PRE": 2000,
+              "ACC": 1080,
+              "EN": true,
+              "TT": true,
+              "DN": false
+            },
+            "description": "",
+            "scope": "Global",
+            "forceState": null,
+            "usageCount": 0,
+            "changedAt": "2026-11-22T23:57:21.963Z"
+          }
+        ]
+      },
+      "programs": [
+        {
+          "id": "program-main",
+          "name": "MainProgram",
+          "description": "Main continuously scheduled program.",
+          "scheduled": true,
+          "mainRoutineId": "routine-main",
+          "routines": [
+            {
+              "id": "routine-main",
+              "name": "MainRoutine",
+              "language": "LADDER",
+              "rungs": [
+                {
+                  "id": "rung_c339938d-e29b-4b7c-865d-e8c9793a7016",
+                  "number": 0,
+                  "comment": "Run latch:\n\nOnly runs when SystemOK is true",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "parallel",
+                        "id": "parallel_72fdb030-3db8-462b-b831-583fa4b93624",
+                        "branches": [
+                          {
+                            "id": "branch_4e0b4d3d-6926-47df-9466-da92f54abc84",
+                            "network": {
+                              "kind": "series",
+                              "elements": [
+                                {
+                                  "kind": "instruction",
+                                  "id": "inst_97d48b28-8548-41ab-99c0-062c87bf462a",
+                                  "type": "XIC",
+                                  "operands": {
+                                    "source": {
+                                      "kind": "TAG",
+                                      "tagId": "tag_ab7b573a-cc4a-401d-80fd-decdc5bcf17e"
+                                    }
+                                  },
+                                  "parameters": {},
+                                  "position": {
+                                    "order": 0
+                                  },
+                                  "executionState": {
+                                    "evaluated": false,
+                                    "inputPower": false,
+                                    "outputPower": false
+                                  },
+                                  "diagnosticState": []
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "id": "branch_392507a6-ca7e-4b98-8ba6-2d3cc0bc3677",
+                            "network": {
+                              "kind": "series",
+                              "elements": [
+                                {
+                                  "kind": "instruction",
+                                  "id": "inst_484c7e59-a3f4-4c60-8b13-0da3a49717f3",
+                                  "type": "XIC",
+                                  "operands": {
+                                    "source": {
+                                      "kind": "TAG",
+                                      "tagId": "tag_cc9aea67-3c3b-499e-a0b8-392dc6e799e8"
+                                    }
+                                  },
+                                  "parameters": {},
+                                  "position": {
+                                    "order": 0
+                                  },
+                                  "executionState": {
+                                    "evaluated": false,
+                                    "inputPower": false,
+                                    "outputPower": false
+                                  },
+                                  "diagnosticState": []
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_cb429ca7-3dd0-4428-87f2-b57fb8825156",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_660163d9-0aa3-4d0c-a1f2-b8b77a013b3e"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_ceccaf12-295a-405f-ab06-80b29cecab96",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_c4b1a897-970c-4fdb-89a4-5f4203195c88",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_cc9aea67-3c3b-499e-a0b8-392dc6e799e8"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 3
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_e7e82997-cf2e-4bed-9b07-1b49be74f71e",
+                  "number": 1,
+                  "comment": "Motor output",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_e9d36927-dd79-4c4d-988e-f9246393909a",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_cc9aea67-3c3b-499e-a0b8-392dc6e799e8"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_43f4e241-614c-48c4-82fb-2952f190f4b7",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_68a38840-7b1b-435a-a42a-c6eaf15f4c1c",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_afa94570-ec2b-4c97-93c0-1fc07786bfac"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_61a3ef55-edb1-4f12-b5ae-7b5b31f9b303",
+                  "number": 2,
+                  "comment": "SystemOK; Safety Permissive rung",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_71ad9c06-7e59-4bee-b1a4-0fcebc4e4aac",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_cee27783-9913-4413-8493-9796198afdca"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_90aef64e-2622-4046-a4b8-fa5cf597d88f",
+                        "type": "XIO",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_9d558f78-123c-4229-9759-832fd28bbc29"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_6d16bcce-6b89-4061-87b1-648bfc1ab0b5",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_fc271918-b761-4174-b8ce-c7a80328e0ba",
+                  "number": 3,
+                  "comment": "One shot",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_31f6e275-a07c-4d4c-ba0a-a057f88529d0",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_e6d3d8b1-7734-4e08-b2e4-45f09b002c58"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_4674d2af-21cb-4ec6-b296-2b55983a9a72",
+                        "type": "ONS",
+                        "operands": {},
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_f1f191e0-8abf-40e1-a3fb-a8b31f255cab",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_017769da-0186-4d63-b742-3ebc3d9537ae",
+                  "number": 4,
+                  "comment": "Store tall part classification",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_46b03841-03ac-4b05-aedd-8bfa68f2f747",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_c5216c5d-3d85-4b5b-b19e-6415f6d91ccd",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_50c9eb9b-6c0b-4b03-8ab2-1661a4745813"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_91da8cf4-ca8c-4e55-bd23-1a460aa7031a",
+                        "type": "OTL",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_21aac8d8-1d52-446d-bcaa-bcf2b38738fa"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_e1a52d71-c01b-4409-bc1d-922d00069239",
+                  "number": 5,
+                  "comment": "Part tracking",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_1ca46141-66db-463a-b745-d814e976474b",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_9b5b8cad-fdc3-412f-951e-69f2abab59dd",
+                        "type": "OTL",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_b13ed5b9-8172-4dab-bd54-d4ee48c496f0"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_41367df6-9c39-49a5-86b2-e626dbc8f5a2",
+                  "number": 6,
+                  "comment": "",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_8b7685a5-2242-4385-967a-f89451a15724",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_b13ed5b9-8172-4dab-bd54-d4ee48c496f0"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_9a9846a0-ee02-456a-a838-a3a407508927",
+                        "type": "TON",
+                        "operands": {
+                          "timer": {
+                            "kind": "TAG",
+                            "tagId": "tag_9eba6902-2cc7-4cfd-968b-a2b2157aa7a2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_8d5c0be4-23c8-45a3-854e-8ad768528cda",
+                  "number": 7,
+                  "comment": "Only tall parts activate diverter",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_b07a4852-818b-424e-935a-3225cbf549bc",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "MEMBER",
+                            "tagId": "tag_9eba6902-2cc7-4cfd-968b-a2b2157aa7a2",
+                            "member": "DN"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_1ad92475-93e2-4d20-881d-b519d57a5ec3",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_21aac8d8-1d52-446d-bcaa-bcf2b38738fa"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_f2f019f4-0b75-4c9c-b539-6402fa6d1671",
+                        "type": "OTL",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_66bf9cf2-0c23-4828-bde3-ae9e96491b36"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_1c9da748-a413-4342-a686-ecbf27d17fef",
+                  "number": 8,
+                  "comment": "Diverter timer; keeps diverter active for 1s",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_a2e5bfa8-7370-4ebf-9b3e-ed0cf09d69fc",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_66bf9cf2-0c23-4828-bde3-ae9e96491b36"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_36692b90-dbdf-4001-b310-aab976861718",
+                        "type": "TON",
+                        "operands": {
+                          "timer": {
+                            "kind": "TAG",
+                            "tagId": "tag_5c1b15fa-6665-4323-a423-2d85557eea56"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_290f03a0-3ee2-4c32-a01c-72d15ec4b517",
+                  "number": 9,
+                  "comment": "Diverter output",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_28329f2e-5b9b-442c-860d-26accd210ff5",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_66bf9cf2-0c23-4828-bde3-ae9e96491b36"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_d81cafe6-fdbd-4983-b353-1d8862491a8d",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_fa33cf24-4cb8-4bbf-a046-90ff6d86fb7d"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_0629bba3-4563-46ff-9f99-c6bae3c94bea",
+                  "number": 10,
+                  "comment": "Unlatch divertActive",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_673567d1-5588-44bf-9466-e459ca361d56",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "MEMBER",
+                            "tagId": "tag_5c1b15fa-6665-4323-a423-2d85557eea56",
+                            "member": "DN"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_2c7e1061-91ad-4e8e-ba53-a74cd37ac5ca",
+                        "type": "OTU",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_66bf9cf2-0c23-4828-bde3-ae9e96491b36"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_91dda957-685b-40a6-a486-cdcc46066023",
+                  "number": 11,
+                  "comment": "Unlatch tracking",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_19648136-6530-42e2-809b-c30d49e05fdb",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "MEMBER",
+                            "tagId": "tag_5c1b15fa-6665-4323-a423-2d85557eea56",
+                            "member": "DN"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_0a648fe6-13c6-41e5-8102-cca3b9bf6a30",
+                        "type": "OTU",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_b13ed5b9-8172-4dab-bd54-d4ee48c496f0"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_b66cd25c-cbc4-4615-a84f-bd2b99029c08",
+                  "number": 12,
+                  "comment": "Short part bypass: clears Tracking when a short part finishes traveling.",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_9fd9938d-8832-445d-95f0-86aa909f7503",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "MEMBER",
+                            "tagId": "tag_9eba6902-2cc7-4cfd-968b-a2b2157aa7a2",
+                            "member": "DN"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_5a3ac0d5-8f8b-486f-9048-4a9f1a414afb",
+                        "type": "XIO",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_21aac8d8-1d52-446d-bcaa-bcf2b38738fa"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_8c41c10c-9d47-4de6-a4e6-37bd2f485f7e",
+                        "type": "OTU",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_b13ed5b9-8172-4dab-bd54-d4ee48c496f0"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_cbccf5b4-dac0-4798-8180-f1f6280bc256",
+                  "number": 13,
+                  "comment": "Reset tallMem",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_b1f11fd7-08df-477d-b4c0-f2eafdf1cd21",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "MEMBER",
+                            "tagId": "tag_9eba6902-2cc7-4cfd-968b-a2b2157aa7a2",
+                            "member": "DN"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_d0b83b46-93f4-47cd-b558-2ec25b8570b5",
+                        "type": "OTU",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_21aac8d8-1d52-446d-bcaa-bcf2b38738fa"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_5cab89b4-44ef-4f8f-bb6d-89dc6152e38d",
+                  "number": 14,
+                  "comment": "Total parts",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_75d6425a-8e4f-4917-9f8f-50852dc78566",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_2e8f7f45-8ba8-4180-af42-305bb3f8a113",
+                        "type": "CTU",
+                        "operands": {
+                          "counter": {
+                            "kind": "TAG",
+                            "tagId": "tag_5585c577-ef24-45c2-aa1a-a99376b1a91a"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_27f9f0c3-0537-4c78-b6ab-ad1171170aa1",
+                  "number": 15,
+                  "comment": "Tall parts",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_886ff019-89b1-4abd-a289-1b856df9eb45",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_0ab5da87-54c6-489f-9e6d-9dbbdfed72dc",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_50c9eb9b-6c0b-4b03-8ab2-1661a4745813"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_8def5fb3-97ac-4840-bb0f-7666ff0e6ebd",
+                        "type": "CTU",
+                        "operands": {
+                          "counter": {
+                            "kind": "TAG",
+                            "tagId": "tag_b6c97969-c35e-48a8-8cc0-ee816b7fbe84"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_ae4e8afd-6852-4955-99a8-79c83396f55f",
+                  "number": 16,
+                  "comment": "Short parts",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_446ebeca-693c-4b61-a941-cf157fa3b560",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_c12e64b7-cd0e-4c55-a200-0ec0047d6af8",
+                        "type": "XIO",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_50c9eb9b-6c0b-4b03-8ab2-1661a4745813"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_afac7e35-ac48-4841-b358-2839f9e29ba4",
+                        "type": "CTU",
+                        "operands": {
+                          "counter": {
+                            "kind": "TAG",
+                            "tagId": "tag_2ff93df5-492f-4496-bb28-d7e2afca6257"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_0cb9154e-0c54-425f-b625-e30ec2705a0d",
+                  "number": 17,
+                  "comment": "Jam detection timer",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_69e0cf28-95b6-4359-853d-6d69c4327d82",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_e6d3d8b1-7734-4e08-b2e4-45f09b002c58"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_449588a9-68b6-4e37-b767-1bdd00f87b58",
+                        "type": "TON",
+                        "operands": {
+                          "timer": {
+                            "kind": "TAG",
+                            "tagId": "tag_8fe73902-45af-4f50-a66d-c43766458db2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_32c07198-f845-415c-9d19-735b45b76345",
+                  "number": 18,
+                  "comment": "Fault latch",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_c9a1f722-d640-47cd-a517-a135bad8a3b0",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "MEMBER",
+                            "tagId": "tag_8fe73902-45af-4f50-a66d-c43766458db2",
+                            "member": "DN"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_87049b3d-180e-4419-b0c8-efdf8da0d781",
+                        "type": "OTL",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_9d558f78-123c-4229-9759-832fd28bbc29"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_109901f7-4421-4524-9e71-d7d2c553d39e",
+                  "number": 19,
+                  "comment": "Fault reset",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_c064be41-4494-4324-8db1-f671f5450616",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_bb8910ba-5f2e-4fe8-8e0f-0babbe7e27a2"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_3540435d-1d99-4b37-af5f-01b6cb4c4fe0",
+                        "type": "XIO",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_e6d3d8b1-7734-4e08-b2e4-45f09b002c58"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_512c2f35-3c71-46f0-95ef-bf1819021ce3",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_cee27783-9913-4413-8493-9796198afdca"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_94f8770b-273f-42b1-abb9-33988cd78608",
+                        "type": "OTU",
+                        "operands": {
+                          "target": {
+                            "kind": "TAG",
+                            "tagId": "tag_9d558f78-123c-4229-9759-832fd28bbc29"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 3
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_ba928c24-6914-4f45-bf9d-8e45a30c7d62",
+                  "number": 20,
+                  "comment": "Red lamp",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_458aef55-53ff-4ee8-9f33-8d48fff988c6",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_9d558f78-123c-4229-9759-832fd28bbc29"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_f6c98407-33d3-4973-baad-d35b2b4f9c93",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_dd8e9423-02b9-4d01-b1d0-1d92af19c351"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "rung_bed7a8c0-a015-4a22-bbe1-bd330d65a049",
+                  "number": 21,
+                  "comment": "Green lamp",
+                  "enabled": true,
+                  "network": {
+                    "kind": "series",
+                    "elements": [
+                      {
+                        "kind": "instruction",
+                        "id": "inst_96eb7c8e-a2e5-490c-976b-b0765f590b1a",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_cc9aea67-3c3b-499e-a0b8-392dc6e799e8"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 0
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_b65e7e2b-6ba4-4563-82a3-ab7f8f632fca",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
+                        "id": "inst_719da299-4d18-4fd3-a76d-60a38e76ffce",
+                        "type": "OTE",
+                        "operands": {
+                          "destination": {
+                            "kind": "TAG",
+                            "tagId": "tag_f30e3c82-f29a-4f91-8b67-3fb0c06b5d75"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 2
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "hmi": null,
+  "ioLinks": {
+    "formatVersion": "LABS-PROJECT-IO-LINKS-V1",
+    "projectId": "project-6fd6dfab-9a66-4136-b3e1-8de3379accbf",
+    "links": [],
+    "setups": {},
+    "joint": null
+  }
+}
