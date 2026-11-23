@@ -36,9 +36,9 @@ T13-15 share one run. Reset the simulator, start the system, then send 2 tall pa
 
 | # | Test | Precondition | Action | Expected | Actual | Pass/Fail |
 |---|------|--------------|--------|----------|--------|-----------|
-| 13 | Total count | Counters at 0 | Run the sequence above | TotalCount = 3 | | |
-| 14 | Tall count | Same run | Read TallCount | TallCount = 2 | | |
-| 15 | Short count | Same run | Read ShortCount | ShortCount = 1 | | |
+| 13 | Total count | Counters at 0 | Run the sequence above | TotalCount = 3 | After 2 tall parts and 1 short part, TotalCount read 3. | Pass |
+| 14 | Tall count | Same run | Read TallCount | TallCount = 2 | After the same run, TallCount read 2. | Pass |
+| 15 | Short count | Same run | Read ShortCount | ShortCount = 1 | After the same run, ShortCount read 1. | Pass |
 
 ## D. Jam fault and reset
 
