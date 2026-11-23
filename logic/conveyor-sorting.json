@@ -5,10 +5,10 @@
     "document": {
       "id": "project-6fd6dfab-9a66-4136-b3e1-8de3379accbf",
       "formatVersion": "1.1",
-      "revision": 255,
+      "revision": 262,
       "metadata": {
-        "name": "Untitled project",
-        "description": "Build your first Ladder routine.",
+        "name": "Conveyor Sorting",
+        "description": "Sorts tall parts off a conveyor with a timed diverter. Includes an e-stop safety permissive, latched jam fault with reset, and part counters.",
         "difficulty": "BEGINNER",
         "category": "Fundamentals"
       },
@@ -22,12 +22,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Runs while the system is on",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:05.392Z"
+            "changedAt": "2026-11-23T00:48:27.336Z"
           },
           {
             "id": "tag_66bf9cf2-0c23-4828-bde3-ae9e96491b36",
@@ -40,7 +40,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:55:23.518Z"
+            "changedAt": "2026-11-23T00:48:27.437Z"
           },
           {
             "id": "tag_fa33cf24-4cb8-4bbf-a046-90ff6d86fb7d",
@@ -53,7 +53,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:55:23.538Z"
+            "changedAt": "2026-11-23T00:48:27.315Z"
           },
           {
             "id": "tag_5c1b15fa-6665-4323-a423-2d85557eea56",
@@ -74,11 +74,11 @@
               "TT": false,
               "DN": false
             },
-            "description": "",
+            "description": "Keeps the diverter active (1 s)",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:55:23.538Z"
+            "changedAt": "2026-11-23T00:48:27.457Z"
           },
           {
             "id": "tag_cee27783-9913-4413-8493-9796198afdca",
@@ -91,7 +91,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:32:48.174Z"
+            "changedAt": "2026-11-23T00:48:31.476Z"
           },
           {
             "id": "tag_9d558f78-123c-4229-9759-832fd28bbc29",
@@ -100,11 +100,11 @@
             "access": "READ_WRITE",
             "initialValue": false,
             "value": false,
-            "description": "latch fault",
+            "description": "Latched jam fault",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:53:25.826Z"
+            "changedAt": "2026-11-23T00:46:21.968Z"
           },
           {
             "id": "tag_f30e3c82-f29a-4f91-8b67-3fb0c06b5d75",
@@ -112,12 +112,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Running indicator",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:05.392Z"
+            "changedAt": "2026-11-23T00:48:27.315Z"
           },
           {
             "id": "tag_8fe73902-45af-4f50-a66d-c43766458db2",
@@ -133,16 +133,16 @@
             },
             "value": {
               "PRE": 5000,
-              "ACC": 1080,
-              "EN": true,
-              "TT": true,
+              "ACC": 0,
+              "EN": false,
+              "TT": false,
               "DN": false
             },
-            "description": "",
+            "description": "Jam detection; trips Fault if PartSensor stays on (5 s)",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:21.963Z"
+            "changedAt": "2026-11-23T00:48:24.987Z"
           },
           {
             "id": "tag_c4f8d699-ab67-4bdd-a0fa-f953ba8617b2",
@@ -155,7 +155,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:20.873Z"
+            "changedAt": "2026-11-23T00:48:24.350Z"
           },
           {
             "id": "tag_e6d3d8b1-7734-4e08-b2e4-45f09b002c58",
@@ -168,7 +168,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:21.982Z"
+            "changedAt": "2026-11-23T00:48:24.970Z"
           },
           {
             "id": "tag_dd8e9423-02b9-4d01-b1d0-1d92af19c351",
@@ -181,7 +181,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:53:25.826Z"
+            "changedAt": "2026-11-23T00:46:21.968Z"
           },
           {
             "id": "tag_bb8910ba-5f2e-4fe8-8e0f-0babbe7e27a2",
@@ -194,7 +194,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-20T15:23:26.457Z"
+            "changedAt": "2026-11-23T00:27:41.214Z"
           },
           {
             "id": "tag_cc9aea67-3c3b-499e-a0b8-392dc6e799e8",
@@ -202,12 +202,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Motor run latch",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:05.392Z"
+            "changedAt": "2026-11-23T00:48:27.336Z"
           },
           {
             "id": "tag_2ff93df5-492f-4496-bb28-d7e2afca6257",
@@ -232,11 +232,11 @@
               "OV": false,
               "UN": false
             },
-            "description": "",
+            "description": "Short parts detected",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:53:25.826Z"
+            "changedAt": "2026-11-23T00:48:06.954Z"
           },
           {
             "id": "tag_ab7b573a-cc4a-401d-80fd-decdc5bcf17e",
@@ -249,7 +249,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:05.668Z"
+            "changedAt": "2026-11-23T00:48:21.755Z"
           },
           {
             "id": "tag_660163d9-0aa3-4d0c-a1f2-b8b77a013b3e",
@@ -296,12 +296,12 @@
             "type": "BOOL",
             "access": "READ_ONLY",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Engine-owned system tag: changes state every 1.000 s of runtime time; 0 at reset.",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:21.101Z"
+            "changedAt": "2026-11-23T01:30:55.912Z"
           },
           {
             "id": "system:Clock_5s",
@@ -309,12 +309,12 @@
             "type": "BOOL",
             "access": "READ_ONLY",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Engine-owned system tag: changes state every 5.000 s of runtime time; 0 at reset.",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:19.046Z"
+            "changedAt": "2026-11-23T01:13:21.997Z"
           },
           {
             "id": "system:Scan_Count",
@@ -322,12 +322,12 @@
             "type": "DINT",
             "access": "READ_ONLY",
             "initialValue": 0,
-            "value": 893,
+            "value": 0,
             "description": "Engine-owned system tag: the number of the scan being executed; 0 at reset.",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:21.963Z"
+            "changedAt": "2026-11-23T01:30:57.971Z"
           },
           {
             "id": "system:Scan_First",
@@ -340,7 +340,7 @@
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:03.510Z"
+            "changedAt": "2026-11-23T00:48:16.343Z"
           },
           {
             "id": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54",
@@ -348,12 +348,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Safety permissive",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:03.481Z"
+            "changedAt": "2026-11-23T01:30:57.971Z"
           },
           {
             "id": "tag_b6c97969-c35e-48a8-8cc0-ee816b7fbe84",
@@ -371,18 +371,18 @@
             },
             "value": {
               "PRE": 1000,
-              "ACC": 1,
+              "ACC": 0,
               "CU": false,
               "CD": false,
               "DN": false,
               "OV": false,
               "UN": false
             },
-            "description": "",
+            "description": "Tall parts detected",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:20.873Z"
+            "changedAt": "2026-11-23T01:30:57.971Z"
           },
           {
             "id": "tag_21aac8d8-1d52-446d-bcaa-bcf2b38738fa",
@@ -390,12 +390,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "Stores classification",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:20.853Z"
+            "changedAt": "2026-11-23T00:48:26.403Z"
           },
           {
             "id": "tag_50c9eb9b-6c0b-4b03-8ab2-1661a4745813",
@@ -403,12 +403,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "part classification",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:56:07.241Z"
+            "changedAt": "2026-11-23T01:30:57.971Z"
           },
           {
             "id": "tag_5585c577-ef24-45c2-aa1a-a99376b1a91a",
@@ -426,18 +426,18 @@
             },
             "value": {
               "PRE": 1000,
-              "ACC": 1,
+              "ACC": 0,
               "CU": false,
               "CD": false,
               "DN": false,
               "OV": false,
               "UN": false
             },
-            "description": "",
+            "description": "Total parts detected",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:20.873Z"
+            "changedAt": "2026-11-23T01:30:57.971Z"
           },
           {
             "id": "tag_b13ed5b9-8172-4dab-bd54-d4ee48c496f0",
@@ -445,12 +445,12 @@
             "type": "BOOL",
             "access": "READ_WRITE",
             "initialValue": false,
-            "value": true,
+            "value": false,
             "description": "True if part is traveling",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:20.853Z"
+            "changedAt": "2026-11-23T00:48:26.424Z"
           },
           {
             "id": "tag_9eba6902-2cc7-4cfd-968b-a2b2157aa7a2",
@@ -466,16 +466,16 @@
             },
             "value": {
               "PRE": 2000,
-              "ACC": 1080,
-              "EN": true,
-              "TT": true,
+              "ACC": 0,
+              "EN": false,
+              "TT": false,
               "DN": false
             },
-            "description": "",
+            "description": "Part travel time from sensor to diverter (2 s)",
             "scope": "Global",
             "forceState": null,
             "usageCount": 0,
-            "changedAt": "2026-11-22T23:57:21.963Z"
+            "changedAt": "2026-11-23T00:48:26.443Z"
           }
         ]
       },
@@ -495,7 +495,7 @@
                 {
                   "id": "rung_c339938d-e29b-4b7c-865d-e8c9793a7016",
                   "number": 0,
-                  "comment": "Run latch:\n\nOnly runs when SystemOK is true",
+                  "comment": "Run latch: only runs when SystemOK is true",
                   "enabled": true,
                   "network": {
                     "kind": "series",
@@ -977,7 +977,7 @@
                 {
                   "id": "rung_41367df6-9c39-49a5-86b2-e626dbc8f5a2",
                   "number": 6,
-                  "comment": "",
+                  "comment": "Travel timer: runs while a part is being tracked.",
                   "enabled": true,
                   "network": {
                     "kind": "series",
@@ -1186,6 +1186,27 @@
                       },
                       {
                         "kind": "instruction",
+                        "id": "inst_e2840c23-c80a-452d-8830-abc5b7d3f67d",
+                        "type": "XIC",
+                        "operands": {
+                          "source": {
+                            "kind": "TAG",
+                            "tagId": "tag_8cdcc87b-2315-400d-bbe6-a8a5a95adc54"
+                          }
+                        },
+                        "parameters": {},
+                        "position": {
+                          "order": 1
+                        },
+                        "executionState": {
+                          "evaluated": false,
+                          "inputPower": false,
+                          "outputPower": false
+                        },
+                        "diagnosticState": []
+                      },
+                      {
+                        "kind": "instruction",
                         "id": "inst_d81cafe6-fdbd-4983-b353-1d8862491a8d",
                         "type": "OTE",
                         "operands": {
@@ -1196,7 +1217,7 @@
                         },
                         "parameters": {},
                         "position": {
-                          "order": 1
+                          "order": 2
                         },
                         "executionState": {
                           "evaluated": false,
@@ -1211,7 +1232,7 @@
                 {
                   "id": "rung_0629bba3-4563-46ff-9f99-c6bae3c94bea",
                   "number": 10,
-                  "comment": "Unlatch divertActive",
+                  "comment": "Unlatch DivertActive",
                   "enabled": true,
                   "network": {
                     "kind": "series",
@@ -1265,7 +1286,7 @@
                 {
                   "id": "rung_91dda957-685b-40a6-a486-cdcc46066023",
                   "number": 11,
-                  "comment": "Unlatch tracking",
+                  "comment": "Unlatch Tracking",
                   "enabled": true,
                   "network": {
                     "kind": "series",
@@ -1394,7 +1415,7 @@
                 {
                   "id": "rung_cbccf5b4-dac0-4798-8180-f1f6280bc256",
                   "number": 13,
-                  "comment": "Reset tallMem",
+                  "comment": "Clear TallMemory when travel is done. Must stay below the DivertActive and short-part bypass rungs, which read TallMemory first.",
                   "enabled": true,
                   "network": {
                     "kind": "series",
