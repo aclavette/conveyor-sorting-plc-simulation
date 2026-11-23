@@ -1340,7 +1340,7 @@
                 {
                   "id": "rung_b66cd25c-cbc4-4615-a84f-bd2b99029c08",
                   "number": 12,
-                  "comment": "Short part bypass: clears Tracking when a short part finishes traveling.",
+                  "comment": "Short part bypass: clears Tracking when travel is done and TallMemory is off",
                   "enabled": true,
                   "network": {
                     "kind": "series",
