@@ -10,7 +10,6 @@ Tested in the FORGE browser-based PLC simulator.
 
 | # | Test | Precondition | Action | Expected | Actual | Pass/Fail |
 |---|------|--------------|--------|----------|--------|-----------|
-
 | 1 | Initial state | Fresh reset | Observe | `SystemOK` on; all other outputs and internal bits off; `StopPB` and `EStop` true; counters at 0 | After reset, `SystemOK` was on. All other internal bits and all outputs were off, `StopPB` and `EStop` were true, and all counters were at 0. | Pass |
 | 2 | Start | Fresh reset | Pulse `StartPB` | `SystemOK`, `Run`, `ConveyorMotor`, and `GreenLamp` turn on | After pulsing `StartPB`, `Run`, `ConveyorMotor`, and `GreenLamp` turned on and stayed on. `RedLamp`, `Fault`, and `Diverter` stayed off. | Pass |
 | 3 | Run seals in | Running (after Test 2) | Release `StartPB` | `Run`, `ConveyorMotor`, and `GreenLamp` stay on | With `StartPB` released, `Run`, `ConveyorMotor`, and `GreenLamp` stayed on. `SystemOK` stayed on; `Fault`, `RedLamp`, and `Diverter` stayed off. | Pass |
