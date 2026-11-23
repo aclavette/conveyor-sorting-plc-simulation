@@ -64,6 +64,6 @@ Tests 13-15 share one run. Reset the simulator, start the system, then send 2 ta
     - **Fix:** added a rung that turns off `Tracking` when `TravelTimer` finishes and `TallMemory` is off (the part is not tall). It sits above the rung that turns off `TallMemory`, so the tall flag is still available when it is evaluated. Also deleted a redundant rung that turned off `TallMemory` when it was already off.
     - **Re-test:** Test 11 passed after the fix. `Tracking` turned off at ~2 s and `Diverter` stayed off.
 - **Test 22 failed on first run.** With `EStop` set false while `Diverter` was on, `ConveyorMotor` and `GreenLamp` turned off, but `Diverter` stayed on until `DiverterTimer` finished (~3.0 s after detection).
-    - **Cause:** the Diverter output rung (rung 009) was driven by `DivertActive` alone, so an e-stop or fault did not turn off the diverter.
+    - **Cause:** the Diverter output rung (rung 9) was driven by `DivertActive` alone, so an e-stop or fault did not turn off the diverter.
     - **Fix:** added `XIC(SystemOK)` to the Diverter output rung, so an e-stop or fault turns off `Diverter` immediately. `DivertActive` and `DiverterTimer` are unchanged, so the sequence cleanup still completes.
     - **Re-test:** Test 22 passed after the fix. `Diverter` turned off as soon as `EStop` was set false.
