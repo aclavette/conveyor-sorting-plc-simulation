@@ -2,7 +2,7 @@
 
 A ladder logic program that sorts tall parts off a conveyor, written and tested in the [FORGE](https://scancycle.net/forge) browser-based PLC simulator. It includes a start/stop run latch behind an e-stop safety permissive, part tracking with a timed diverter, part counters, and a latched jam fault with a conditional reset.
 
-> **Modbus status:** a register map is included as a design document only. The browser simulator has no Modbus interface, so the map was **designed, not tested**.
+> **Modbus status:** a register map is included as a design document only. The browser simulator has no Modbus interface, so the map was designed, not tested.
 
 ## What it demonstrates
 
@@ -53,8 +53,8 @@ Tags: 6 inputs, 4 outputs, 7 internal bits, 3 timers, and 3 counters. See [`docs
 
 1. Open FORGE in a browser and import [`logic/conveyor-sorting.json`](logic/conveyor-sorting.json).
 2. Inputs are toggled by hand in the simulator. Start with `StopPB` and `EStop` true (healthy).
-3. Try this sequence:
-   1. Pulse `StartPB` (set it on, then off). `Run`, `ConveyorMotor`, and `GreenLamp` turn on.
+3. Example sequence:
+   1. Pulse `StartPB`. `Run`, `ConveyorMotor`, and `GreenLamp` turn on.
    2. Set `TallPart` on, then pulse `PartSensor`. About 2 s later `Diverter` turns on for 1 s.
    3. Set `TallPart` off and pulse `PartSensor`. The diverter stays off, and `ShortCount` increments.
    4. Hold `PartSensor` on for 5 s. `Fault` latches and the red lamp turns on. Release the sensor and pulse `ResetPB` to clear it.
